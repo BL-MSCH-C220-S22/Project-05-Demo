@@ -25,7 +25,7 @@ func _physics_process(_delta):
 	if velocity != Vector3.ZERO:
 		velocity = move_and_slide(velocity, Vector3.UP)
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot_2"):
 		shoot()
 
 func _input(event):
@@ -37,14 +37,14 @@ func _input(event):
 
 func get_input():
 	var input_dir = Vector3.ZERO
-	if Input.is_action_pressed("forward"):
+	if Input.is_action_pressed("forward_2"):
 		input_dir += -camera.global_transform.basis.z
-	if Input.is_action_pressed("back"):
+	if Input.is_action_pressed("back_2"):
 		input_dir += camera.global_transform.basis.z
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left_2"):
 		rotate_y(rotation_speed)
 		#input_dir += -camera.global_transform.basis.x
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right_2"):
 		rotate_y(-rotation_speed)
 		#input_dir += camera.global_transform.basis.x
 	input_dir = input_dir.normalized()

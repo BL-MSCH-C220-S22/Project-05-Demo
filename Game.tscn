@@ -17,6 +17,32 @@ extents = Vector3( 20, 1, 20 )
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
 
+[node name="Container" type="HSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V1" type="ViewportContainer" parent="Container"]
+margin_right = 512.0
+margin_bottom = 600.0
+
+[node name="V1" type="Viewport" parent="Container/V1"]
+size = Vector2( 512, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="V2" type="ViewportContainer" parent="Container"]
+margin_left = 524.0
+margin_right = 1036.0
+margin_bottom = 600.0
+
+[node name="V2" type="Viewport" parent="Container/V2"]
+size = Vector2( 512, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
 [node name="Ground" type="StaticBody" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="Ground"]
@@ -56,7 +82,3 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.919046, 0.39415, 0, -0.39415, 0.919046, 0, 10.8992, 22.0224 )
-current = true
