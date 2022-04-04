@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UI/HUD.gd" type="Script" id=2]
+[ext_resource path="res://Keys/Red_Key.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Doors/Red_DoorClosed.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Keys/Green_Key.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Doors/Green_DoorClosed.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 40, 2, 40 )
@@ -28,9 +32,6 @@ shape = SubResource( 3 )
 
 [node name="Player1Pos" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 0 )
-
-[node name="Player2Pos" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 0 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.927001, -0.371426, 0.0520815, 0.0960859, 0.369413, 0.924284, -0.362543, -0.851808, 0.378135, 0, 23.3954, 0 )
@@ -60,3 +61,21 @@ __meta__ = {
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.919046, 0.39415, 0, -0.39415, 0.919046, 0, 10.8992, 22.0224 )
 current = true
+
+[node name="Keys" type="Spatial" parent="."]
+
+[node name="Red_Key" parent="Keys" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0 )
+
+[node name="Key" parent="Keys" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47719, 4.99406 )
+color = "Green"
+
+[node name="Doors" type="Spatial" parent="."]
+
+[node name="Red_DoorClosed" parent="Doors" instance=ExtResource( 4 )]
+transform = Transform( 0.18973, 0, -0.981836, 0, 1, 0, 0.981836, 0, 0.18973, 11.7246, 0, 0 )
+
+[node name="Green_DoorClosed" parent="Doors" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.8445 )
+color = "Green"

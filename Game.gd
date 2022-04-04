@@ -1,7 +1,6 @@
 extends Spatial
 
 onready var player1pos = $Player1Pos
-onready var player2pos = $Player2Pos
 
 func _ready():
 	var player1 = preload("res://Player/Player.tscn").instance()

@@ -10,6 +10,8 @@ var mouse_sensitivity = 0.002
 var mouse_range = 1.2
 var velocity = Vector2.ZERO
 
+var keys = []
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
