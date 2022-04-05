@@ -33,6 +33,9 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("pickup"):
 		pickup()
 
+	if Input.is_action_just_pressed("swap"):
+		swap()
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		$Pivot.rotate_x(-event.relative.y * mouse_sensitivity)
@@ -59,7 +62,12 @@ func shoot():
 
 func pickup():
 	var gun = get_node_or_null("Pivot/Gun")
-	if gun != null:
+	if gun != null and to_pickup != null:
+		gun = to_pickup.Pickup.instance()
+		gun.name = "Gun"
+		$Inventory.add_child(gun)
+		to_pickup.queue_free()
+	elif gun != null:
 		var to_drop = gun.Pickup.instance()
 		Guns.add_child(to_drop)
 		to_drop.global_transform.origin = global_transform.origin + Vector3(0,1.5,0)
@@ -75,6 +83,15 @@ func pickup():
 		$Pivot.add_child(gun)
 		$Pivot/Camera/Crosshair.show()
 		to_pickup.queue_free()
+
+func swap():
+	var gun1 = get_node_or_null("Pivot/Gun")
+	var gun2 = get_node_or_null("Inventory/Gun")
+	if gun1 != null and gun2 != null:
+		$Pivot.remove_child(gun1)
+		$Inventory.remove_child(gun2)
+		$Pivot.add_child(gun2)
+		$Inventory.add_child(gun1)
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Guns"):

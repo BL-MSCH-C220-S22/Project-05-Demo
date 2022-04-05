@@ -57,5 +57,8 @@ texture = ExtResource( 5 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 6 )
 
+[node name="Inventory" type="Spatial" parent="."]
+visible = false
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

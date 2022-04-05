@@ -60,9 +60,7 @@ surfaces/3 = {
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.0839335, 0.10093, 0.397451 )
 
-[node name="Blaster" type="RigidBody" groups=[
-"Guns",
-]]
+[node name="BlasterG" type="RigidBody" groups=["Guns"]]
 script = ExtResource( 5 )
 
 [node name="tmpParent" type="Spatial" parent="."]

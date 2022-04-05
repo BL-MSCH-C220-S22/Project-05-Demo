@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/blasterA.glb" type="PackedScene" id=1]
+[ext_resource path="res://Player/BlasterA.gd" type="Script" id=2]
+
+[node name="BlasterA" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37108, 0.114573, 0 )
+script = ExtResource( 2 )
+
+[node name="blasterA" parent="tmpParent" index="0"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.82024, -0.245776, -0.422348 )
+
+[node name="RayCast" type="RayCast" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.387458, -0.0267795, -0.833898 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="Timer" type="Timer" parent="." index="2"]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

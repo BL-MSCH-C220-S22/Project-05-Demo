@@ -5,7 +5,9 @@ A demo repository for MSCH-C220 Project 05—3D FPS.
 This repository contains a platform and a FPS character. The player can move (WASD + mouse) and shoot a blaster (with muzzle flash).
 
 ## Implementation
-Built using Godot 3.3.3
+
+Built using Godot 3.4.2
+
 
 ## References
  - [kenney.nl Blaster Kit](https://kenney.nl/assets/blaster-kit)
@@ -15,8 +17,11 @@ Built using Godot 3.3.3
  - [3D Multiplayer for Beginners](https://www.youtube.com/watch?v=K0luHLZxjBA)
 
 ## Future Development
+
 None
 
 ## Created by 
+
 Jason Francis
+
 ```

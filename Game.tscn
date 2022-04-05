@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UI/HUD.gd" type="Script" id=2]
-[ext_resource path="res://Guns/Blaster.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Guns/BlasterG.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Guns/BlasterA.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 40, 2, 40 )
@@ -29,9 +30,6 @@ shape = SubResource( 3 )
 
 [node name="Player1Pos" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 0 )
-
-[node name="Player2Pos" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 0 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.927001, -0.371426, 0.0520815, 0.0960859, 0.369413, 0.924284, -0.362543, -0.851808, 0.378135, 0, 23.3954, 0 )
@@ -64,5 +62,8 @@ current = true
 
 [node name="Guns" type="Spatial" parent="."]
 
-[node name="Blaster" parent="Guns" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02069, -4.23165 )
+[node name="BlasterG" parent="Guns" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64583, -6.7982 )
+
+[node name="BlasterA" parent="Guns" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95273, 1.53969, 0 )
