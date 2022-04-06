@@ -1,52 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Guns/Blaster.gd" type="Script" id=1]
 [ext_resource path="res://Assets/metal.material" type="Material" id=2]
 [ext_resource path="res://Assets/darkMetal.material" type="Material" id=3]
 [ext_resource path="res://Assets/dark.material" type="Material" id=4]
 [ext_resource path="res://Assets/pink.material" type="Material" id=5]
-[ext_resource path="res://Assets/blasterH.glb" type="PackedScene" id=6]
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends Spatial
-
-var damage = 5
-onready var Decal = load(\"res://Player/Decal.tscn\")
-onready var Pickup = load(\"res://Guns/BlasterH.tscn\")
-var ready = true
-
-func shoot():
-	if ready:
-		ready = false
-		$Timer.start()
-		if $RayCast.is_colliding():
-			var t = $RayCast.get_collider()
-			var p = $RayCast.get_collision_point()
-			var n = $RayCast.get_collision_normal()
-			var decal = Decal.instance()
-			t.add_child(decal)
-			decal.global_transform.origin = p
-			if n != Vector3.UP:
-				decal.look_at(p + n, Vector3.UP)
-
-	
-func _on_Timer_timeout():
-	ready = true
-"
-
-[sub_resource type="PackedScene" id=4]
-_bundled = {
-"base_scene": 0,
-"conn_count": 1,
-"conns": PoolIntArray( 3, 0, 12, 11, 2, 0 ),
-"editable_instances": [  ],
-"names": PoolStringArray( "BlasterH", "script", "tmpParent", "blasterH", "transform", "RayCast", "enabled", "cast_to", "Timer", "wait_time", "one_shot", "_on_Timer_timeout", "timeout" ),
-"node_count": 4,
-"node_paths": [ NodePath("tmpParent") ],
-"nodes": PoolIntArray( -1, -1, 2147483647, 0, -1, 1, 1, 1, 0, 1073741824, 0, 2147483647, 262147, -1, 1, 4, 2, 0, 0, 0, 5, 524293, -1, 3, 4, 3, 6, 4, 7, 5, 0, 0, 0, 8, 786440, -1, 2, 9, 6, 10, 4, 0 ),
-"variants": [ ExtResource( 6 ), SubResource( 3 ), Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.380694, -0.117207, -0.443862 ), Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.275397 ), true, Vector3( 0, 0, -100 ), 0.8 ],
-"version": 2
-}
+[ext_resource path="res://Player/BlasterH.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "blasterH_Mesh blasterH"
@@ -104,7 +63,7 @@ extents = Vector3( 0.0653801, 0.140702, 0.266221 )
 
 [node name="BlasterH" type="RigidBody" groups=["Guns"]]
 script = ExtResource( 1 )
-Pickup = SubResource( 4 )
+Pickup = ExtResource( 6 )
 
 [node name="tmpParent" type="Spatial" parent="."]
 

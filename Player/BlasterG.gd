@@ -3,6 +3,7 @@ extends Spatial
 var damage = 10
 onready var Decal = load("res://Player/Decal.tscn")
 onready var Pickup = load("res://Guns/BlasterG.tscn")
+onready var inventory = load("res://Assets/blasterG_NW.png")
 
 func shoot():
 	if not $Flash.visible:

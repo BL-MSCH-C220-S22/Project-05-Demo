@@ -12,6 +12,7 @@ var velocity = Vector2.ZERO
 var to_pickup = null
 
 onready var Guns = get_node("/root/Game/Guns")
+onready var Inventory = get_node("/root/Game/HUD/Inventory")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -66,6 +67,7 @@ func pickup():
 		gun = to_pickup.Pickup.instance()
 		gun.name = "Gun"
 		$Inventory.add_child(gun)
+		Inventory.update_inventory($Inventory.get_children())
 		to_pickup.queue_free()
 	elif gun != null:
 		var to_drop = gun.Pickup.instance()
@@ -77,21 +79,44 @@ func pickup():
 		to_drop.apply_central_impulse(throw)
 		gun.queue_free()
 		$Pivot/Camera/Crosshair.hide()
+		Inventory.update_selection(null)
 	elif to_pickup != null:
 		gun = to_pickup.Pickup.instance()
 		gun.name = "Gun"
 		$Pivot.add_child(gun)
 		$Pivot/Camera/Crosshair.show()
+		Inventory.update_selection(gun.inventory)
 		to_pickup.queue_free()
 
 func swap():
 	var gun1 = get_node_or_null("Pivot/Gun")
-	var gun2 = get_node_or_null("Inventory/Gun")
-	if gun1 != null and gun2 != null:
+	var inventory = get_node_or_null("Inventory")
+	if gun1 != null and inventory != null and inventory.get_child_count() > 0:
+		var gun2 = inventory.get_child(0)
 		$Pivot.remove_child(gun1)
 		$Inventory.remove_child(gun2)
 		$Pivot.add_child(gun2)
+		gun2.name = "Gun"
+		Inventory.update_selection(gun2.inventory)
 		$Inventory.add_child(gun1)
+		Inventory.update_inventory($Inventory.get_children())
+
+func swap_inventory(gun2):
+	var gun1 = get_node_or_null("Pivot/Gun")
+	var inventory = get_node_or_null("Inventory")
+	if gun1 == null and gun2 != null:
+		$Inventory.remove_child(gun2)
+		$Pivot.add_child(gun2)
+		Inventory.update_selection(gun2.inventory)
+		Inventory.update_inventory($Inventory.get_children())
+	if gun1 != null and inventory != null and inventory.get_child_count() > 0:
+		$Pivot.remove_child(gun1)
+		$Inventory.remove_child(gun2)
+		$Pivot.add_child(gun2)
+		gun2.name = "Gun"
+		Inventory.update_selection(gun2.inventory)
+		$Inventory.add_child(gun1)
+		Inventory.update_inventory($Inventory.get_children())
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("Guns"):

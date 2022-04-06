@@ -1,9 +1,9 @@
 extends Spatial
 
-var damage = 4
+var damage = 5
 onready var Decal = load("res://Player/Decal.tscn")
-onready var Pickup = load("res://Guns/BlasterA.tscn")
-onready var inventory = load("res://Assets/blasterA_NW.png")
+onready var Pickup = load("res://Guns/BlasterH.tscn")
+onready var inventory = load("res://Assets/blasterH_NW.png")
 var ready = true
 
 func shoot():
