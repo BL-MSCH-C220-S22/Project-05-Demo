@@ -34,9 +34,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 0 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.927001, -0.371426, 0.0520815, 0.0960859, 0.369413, 0.924284, -0.362543, -0.851808, 0.378135, 0, 23.3954, 0 )
 
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.919046, 0.39415, 0, -0.39415, 0.919046, 0, 10.8992, 22.0224 )
+current = true
+
+[node name="Guns" type="Spatial" parent="."]
+
+[node name="BlasterG" parent="Guns" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64583, -6.7982 )
+
+[node name="BlasterA" parent="Guns" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95273, 1.53969, 0 )
+
 [node name="HUD" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,15 +67,3 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.919046, 0.39415, 0, -0.39415, 0.919046, 0, 10.8992, 22.0224 )
-current = true
-
-[node name="Guns" type="Spatial" parent="."]
-
-[node name="BlasterG" parent="Guns" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64583, -6.7982 )
-
-[node name="BlasterA" parent="Guns" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95273, 1.53969, 0 )
